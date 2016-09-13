@@ -25,7 +25,7 @@ public class ContactsModel {
             .create();
 
         mRetrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.2.71:8000")
+                .baseUrl("http://192.168.1.24:8000")
                 .addConverterFactory(GsonConverterFactory.create(mGson))
                 .build();
     }

@@ -1,6 +1,8 @@
 package com.robertoallende.contacts.entities;
 
-public class Picture {
+import java.io.Serializable;
+
+public class Picture implements Serializable {
 
     public String large;
     public String medium;

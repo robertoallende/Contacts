@@ -39,4 +39,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
 
+    compile 'com.hudomju:swipe-to-dismiss-undo:1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

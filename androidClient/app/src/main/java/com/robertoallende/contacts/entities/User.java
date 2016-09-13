@@ -1,7 +1,9 @@
 package com.robertoallende.contacts.entities;
 
+import java.io.Serializable;
+
 // This is used to map the JSON keys to the object by GSON
-public class User {
+public class User implements Serializable {
 
     public String _id;
     public String gender;

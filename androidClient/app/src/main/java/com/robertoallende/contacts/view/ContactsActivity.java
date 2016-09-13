@@ -1,22 +1,30 @@
 package com.robertoallende.contacts.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.controller.ContactsController;
 import com.robertoallende.contacts.entities.User;
 import com.robertoallende.contacts.events.GetUsersResultEvent;
+import com.robertoallende.contacts.view.adapters.ContactsAdapter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactsActivity extends AppCompatActivity {
+
+    private ContactsAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,11 @@ public class ContactsActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        ListView listview = (ListView)findViewById(R.id.contact_list);
+        ArrayList<User> users = new ArrayList<User>();
+        mAdapter = new ContactsAdapter(this, users);
+        listview.setAdapter(mAdapter);
     }
 
     public void initActivityData() {
@@ -47,24 +60,18 @@ public class ContactsActivity extends AppCompatActivity {
         controller.getContacts();
     }
 
-    @Subscribe
-    public void onEvent(GetUsersResultEvent eventResult) {
-        if (eventResult.isSuccess()) {
-            String newContent = "";
-            for (User user: eventResult.getUsers()) {
-                newContent += user.name.first + " " + user.name.last + "\n";
-            }
-            final String content = newContent;
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    TextView view = (TextView) findViewById(R.id.content_contacts_text);
-                    view.setText(content);
-                }
-            });
-
-        }
+    public void openPersonActivity(User user) {
+        Intent intent = PersonActivity.makeIntent(this, user);
+        startActivity(intent);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(GetUsersResultEvent eventResult) {
+        if (eventResult.isSuccess()) {
+            final List<User> users = eventResult.getUsers();
+            mAdapter.addAll(users);
+        }
+    }
 
     @Override
     protected void onPause(){
