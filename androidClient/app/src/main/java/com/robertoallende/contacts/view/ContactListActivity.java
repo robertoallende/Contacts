@@ -29,7 +29,7 @@ public class ContactListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacts);
+        setContentView(R.layout.activity_contact_list);
         initViewItems();
         initActivityData();
 
@@ -44,8 +44,8 @@ public class ContactListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                openContactAddActivity();
+                // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 
@@ -62,6 +62,11 @@ public class ContactListActivity extends AppCompatActivity {
 
     public void openPersonActivity(User user) {
         Intent intent = ContactActivity.makeIntent(this, user);
+        startActivity(intent);
+    }
+
+    public void openContactAddActivity() {
+        Intent intent = ContactAddActivity.makeIntent(this);
         startActivity(intent);
     }
 
