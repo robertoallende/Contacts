@@ -51,27 +51,20 @@ public class ContactsAdapter extends ArrayAdapter<User> {
             String imageUrl = "";
             if (! user.picture.large.isEmpty()) {
                 imageUrl = user.picture.large;
+                Transformation transformation = new RoundedTransformationBuilder()
+                        .borderColor(Color.WHITE)
+                        .borderWidthDp(3)
+                        .cornerRadiusDp(60)
+                        .oval(false)
+                        .build();
+
+                Picasso.with(context).load(imageUrl).transform(transformation).into(imageView);
             } else {
-                imageUrl = "http://impactspace.com/images/uploads/person-default.png";
+                Picasso.with(context).load(R.drawable.default_user).into(imageView);
             }
 
-            Transformation transformation = new RoundedTransformationBuilder()
-                    .borderColor(Color.WHITE)
-                    .borderWidthDp(3)
-                    .cornerRadiusDp(30)
-                    .oval(false)
-                    .build();
 
-            Picasso.with(context).load(imageUrl).transform(transformation).into(imageView);
         }
-
-        /* rowView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.openPersonActivity(user);
-            }
-        });
-        */
         return rowView;
     }
 

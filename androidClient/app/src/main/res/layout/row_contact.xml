@@ -20,11 +20,13 @@
         >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/contact_photo"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/default_user"
+            />
 
         <TextView
             android:id="@+id/contact_name"
