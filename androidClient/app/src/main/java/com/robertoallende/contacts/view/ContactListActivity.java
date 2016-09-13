@@ -80,7 +80,7 @@ public class ContactListActivity extends AppCompatActivity {
 
                             @Override
                             public void onPendingDismiss(ListViewAdapter recyclerView, int position) {
-                                
+
                             }
 
                             @Override

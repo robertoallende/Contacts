@@ -1,6 +1,7 @@
 package com.robertoallende.contacts.view.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.entities.User;
 import com.robertoallende.contacts.view.ContactListActivity;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
+
 import java.util.List;
 
 public class ContactsAdapter extends ArrayAdapter<User> {
@@ -50,7 +54,15 @@ public class ContactsAdapter extends ArrayAdapter<User> {
             } else {
                 imageUrl = "http://impactspace.com/images/uploads/person-default.png";
             }
-            Picasso.with(context).load(imageUrl).into(imageView);
+
+            Transformation transformation = new RoundedTransformationBuilder()
+                    .borderColor(Color.WHITE)
+                    .borderWidthDp(3)
+                    .cornerRadiusDp(30)
+                    .oval(false)
+                    .build();
+
+            Picasso.with(context).load(imageUrl).transform(transformation).into(imageView);
         }
 
         /* rowView.setOnClickListener(new View.OnClickListener() {
