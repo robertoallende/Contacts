@@ -3,7 +3,6 @@ package com.robertoallende.contacts.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -31,7 +30,7 @@ public class ContactListActivity extends AppCompatActivity {
 
     private ContactsAdapter mAdapter;
     private static int ADD_CONTACT = 1;
-    private static final int TIME_TO_AUTOMATICALLY_DISMISS_ITEM = 3000;
+    private static final int TIME_TO_AUTOMATICALLY_DISMISS_ITEM = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +89,7 @@ public class ContactListActivity extends AppCompatActivity {
                         });
 
         listView.setOnTouchListener(touchListener);
-        touchListener.setDismissDelay(3000);
+        touchListener.setDismissDelay(TIME_TO_AUTOMATICALLY_DISMISS_ITEM);
 
 
         listView.setOnScrollListener((AbsListView.OnScrollListener) touchListener.makeScrollListener());
