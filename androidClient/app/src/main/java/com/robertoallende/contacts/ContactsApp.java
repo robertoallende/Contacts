@@ -25,7 +25,7 @@ public class ContactsApp extends Application {
     private void configureJobManager() {
         Configuration.Builder builder = new Configuration.Builder(this)
                 .customLogger(new CustomLogger() {
-                    private static final String TAG = "JOBS";
+                    private static final String TAG = "ContactsAppJOBS";
                     @Override
                     public boolean isDebugEnabled() {
                         return true;

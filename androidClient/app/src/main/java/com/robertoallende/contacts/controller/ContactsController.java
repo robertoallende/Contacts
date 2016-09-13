@@ -2,7 +2,9 @@ package com.robertoallende.contacts.controller;
 
 import android.content.Context;
 
+import com.robertoallende.contacts.entities.User;
 import com.robertoallende.contacts.jobs.GetContactsJob;
+import com.robertoallende.contacts.jobs.SaveContactJob;
 
 public class ContactsController extends ContactsAppController {
 
@@ -21,6 +23,10 @@ public class ContactsController extends ContactsAppController {
 
     public void getContacts() {
         mJobManager.addJobInBackground(new GetContactsJob(getContext()));
+    }
+
+    public void saveContact(User user) {
+        mJobManager.addJobInBackground(new SaveContactJob(getContext(), user));
     }
 
 

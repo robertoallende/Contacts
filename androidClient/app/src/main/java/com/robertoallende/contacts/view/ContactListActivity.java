@@ -25,6 +25,7 @@ import java.util.List;
 public class ContactListActivity extends AppCompatActivity {
 
     private ContactsAdapter mAdapter;
+    private static int ADD_CONTACT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,6 @@ public class ContactListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openContactAddActivity();
-                // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 
@@ -67,14 +67,35 @@ public class ContactListActivity extends AppCompatActivity {
 
     public void openContactAddActivity() {
         Intent intent = ContactAddActivity.makeIntent(this);
-        startActivity(intent);
+        startActivityForResult(intent, ADD_CONTACT);
+    }
+
+    public void displayError(String errorMsg) {
+        View view = (View) this.findViewById(android.R.id.content).getRootView();
+        Snackbar.make(view, errorMsg, Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(GetUsersResultEvent eventResult) {
         if (eventResult.isSuccess()) {
             final List<User> users = eventResult.getUsers();
-            mAdapter.addAll(users);
+            if (users != null) {
+                mAdapter.addAll(users);
+            } else {
+                displayError("Error fetching data");
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ADD_CONTACT) {
+            if (resultCode == RESULT_OK) {
+                User user = (User) data.getSerializableExtra(ContactAddActivity.USER);
+                mAdapter.add(user);
+                ContactsController controller = ContactsController.getInstance(this);
+                controller.saveContact(user);
+            }
         }
     }
 

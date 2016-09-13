@@ -8,6 +8,11 @@ public class Name implements Serializable {
     public String first;
     public String last;
 
+    public Name(String first, String last) {
+        this.last = last;
+        this.first = first;
+    }
+
     public String toString() {
 
         String firstName = first.substring(0,1).toUpperCase() + first.substring(1);

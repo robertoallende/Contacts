@@ -8,4 +8,9 @@ public class Picture implements Serializable {
     public String medium;
     public String thumbnail;
 
+    public Picture() {
+        this.large = "";
+        this.medium = "";
+        this.thumbnail = "";
+    }
 }

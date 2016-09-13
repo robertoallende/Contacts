@@ -13,6 +13,151 @@
     tools:showIn="@layout/activity_contact_add"
     android:orientation="vertical">
 
+    <ScrollView
+        android:id="@+id/create_user_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_first_name_layout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/add_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_first_name"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeActionId="@+id/first_name_action"
+                    android:imeOptions="actionUnspecified"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_last_name_layout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/add_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_last_name"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeActionId="@+id/last_name_action"
+                    android:imeOptions="actionUnspecified"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_city_layout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/add_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_city"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeActionId="@+id/city_action"
+                    android:imeOptions="actionUnspecified"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_state_layout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/add_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_state"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeActionId="@+id/state_action"
+                    android:imeOptions="actionUnspecified"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_mail_layout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/add_mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_mail"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeActionId="@+id/mail_action"
+                    android:imeOptions="actionUnspecified"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_phone_layout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/add_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_phone"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeActionId="@+id/phone_action"
+                    android:imeOptions="actionUnspecified"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_cell_layout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/add_cell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_cell"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeActionId="@+id/cell_action"
+                    android:imeOptions="actionUnspecified"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/create_user_button"
+        android:text="@string/add_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="true"/>
 
 
 </LinearLayout>

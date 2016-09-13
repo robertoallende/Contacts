@@ -24,9 +24,13 @@ public class GetContactsJob extends ContactsAppJob {
         ContactsModel contactsModel = new ContactsModel();
         List<User> users = contactsModel.getContacts();
         Boolean result = false;
-        if (users.size() > 0) {
+        if (users != null && users.size() > 0) {
             result = true;
+        } else if (users == null) {
+            EventBus.getDefault().post(new GetUsersResultEvent(false, users));
         }
         EventBus.getDefault().post(new GetUsersResultEvent(true, users));
+
+
     }
 }

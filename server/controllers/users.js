@@ -1,7 +1,8 @@
 var User = require('../models/user');
 var express = require('express');
+var bodyParser = require('body-parser');
 var router = express.Router();
-
+router.use(bodyParser.json());
 
 // GET /users
 // Get a list of users
@@ -34,6 +35,19 @@ router.get('/:id', function(req, res) {
     }
 
     res.json(user);
+  });
+});
+
+router.post('/new', function(req, res) {
+  var user = new User(req.body);
+  user.save( function(error, data){
+    if(error){
+        return false;
+    }
+    else{
+        // res.json(data);
+        return true;
+    }
   });
 });
 

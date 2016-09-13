@@ -10,6 +10,11 @@ public class Location implements Serializable {
     public String state;
     public Integer zip;
 
+    public Location(String city, String state) {
+        this.state = state;
+        this.city = city;
+    }
+
     public String toString() {
 
         String cityName = city.substring(0,1).toUpperCase() + city.substring(1);

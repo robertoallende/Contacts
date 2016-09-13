@@ -42,6 +42,7 @@ public class ContactActivity extends AppCompatActivity {
         if (user != null) {
             if (user.name != null && personNameView != null) {
                     personNameView.setText(user.name.toString());
+                    setTitle(user.name.toString());
             }
             if (user.location != null && personLocationView != null) {
                 personLocationView.setText(user.location.toString());

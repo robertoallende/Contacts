@@ -1,6 +1,8 @@
 package com.robertoallende.contacts.model;
 
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.robertoallende.contacts.entities.User;
@@ -25,7 +27,7 @@ public class ContactsModel {
             .create();
 
         mRetrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.24:8000")
+                .baseUrl("http://192.168.2.71:8000")
                 .addConverterFactory(GsonConverterFactory.create(mGson))
                 .build();
     }
@@ -39,6 +41,29 @@ public class ContactsModel {
             result = call.execute();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        if (result == null) {
+            return null;
+        }
+
+        return result.body();
+    }
+
+    public Boolean saveContact(User user) {
+        Log.v("CONTACTS=========", "saved");
+
+        ContactsApi contactsApi = mRetrofit.create(ContactsApi.class);
+        Call<Boolean> call = contactsApi.createUser(user);
+        Response<Boolean> result = null;
+        try {
+            result = call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (result == null) {
+            return false;
         }
         return result.body();
     }

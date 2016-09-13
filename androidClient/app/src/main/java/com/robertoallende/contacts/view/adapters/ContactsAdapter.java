@@ -41,10 +41,17 @@ public class ContactsAdapter extends ArrayAdapter<User> {
 
         final User user = values.get(position);
         String fullName = user.name.toString();
-        String imageUrl = user.picture.large;
-
         textView.setText(fullName);
-        Picasso.with(context).load(imageUrl).into(imageView);
+
+        if (user.picture != null) {
+            String imageUrl = "";
+            if (! user.picture.large.isEmpty()) {
+                imageUrl = user.picture.large;
+            } else {
+                imageUrl = "http://impactspace.com/images/uploads/person-default.png";
+            }
+            Picasso.with(context).load(imageUrl).into(imageView);
+        }
 
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
