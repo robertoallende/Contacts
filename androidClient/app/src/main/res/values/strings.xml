@@ -11,7 +11,9 @@
     <string name="add_mail">Mail</string>
     <string name="add_phone">Phone</string>
     <string name="add_cell">Cell Phone</string>
-
     <string name="add_contact">Add Contact</string>
+
+    <string name="deleted">Deleted</string>
+    <string name="undo">UNDO</string>
 
 </resources>

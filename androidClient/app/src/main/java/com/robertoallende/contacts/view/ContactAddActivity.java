@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.entities.User;
@@ -91,7 +92,7 @@ public class ContactAddActivity extends AppCompatActivity {
 
     public void displayError(String errorMsg) {
         View view = (View) this.findViewById(android.R.id.content).getRootView();
-        Snackbar.make(view, errorMsg, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
     }
 
 

@@ -53,13 +53,22 @@ public class ContactsAdapter extends ArrayAdapter<User> {
             Picasso.with(context).load(imageUrl).into(imageView);
         }
 
-        rowView.setOnClickListener(new View.OnClickListener() {
+        /* rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 context.openPersonActivity(user);
             }
         });
-
+        */
         return rowView;
+    }
+
+    public User getUser(int position) {
+        return values.get(position);
+    }
+
+    public void remove(int position) {
+        values.remove(position);
+        notifyDataSetChanged();
     }
 }

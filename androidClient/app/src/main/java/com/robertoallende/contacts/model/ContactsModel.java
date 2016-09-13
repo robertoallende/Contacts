@@ -51,8 +51,6 @@ public class ContactsModel {
     }
 
     public Boolean saveContact(User user) {
-        Log.v("CONTACTS=========", "saved");
-
         ContactsApi contactsApi = mRetrofit.create(ContactsApi.class);
         Call<Boolean> call = contactsApi.createUser(user);
         Response<Boolean> result = null;

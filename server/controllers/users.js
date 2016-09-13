@@ -44,11 +44,24 @@ router.post('/new', function(req, res) {
     if(error){
         return false;
     }
-    else{
+    else {
         // res.json(data);
         return true;
     }
   });
 });
+
+router.delete('/:id', function(req, res) {
+  findByIdAndRemove(req.session.user._id, {}, function(error, data) {
+    if(error){
+        return false;
+    }
+    else {
+        return true;
+    }
+  }
+
+});
+
 
 module.exports = router;
