@@ -3,22 +3,19 @@ package com.robertoallende.contacts.view;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
 import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.entities.User;
 
-public class PersonActivity extends AppCompatActivity {
+public class ContactActivity extends AppCompatActivity {
 
     private static String PERSON = "person";
 
     public static Intent makeIntent(Context context, User person) {
-        Intent intent = new Intent(context, PersonActivity.class);
+        Intent intent = new Intent(context, ContactActivity.class);
         intent.putExtra(PERSON, person);
         return intent;
     }
@@ -26,7 +23,7 @@ public class PersonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_person);
+        setContentView(R.layout.activity_contact);
         initViewItems();
     }
 

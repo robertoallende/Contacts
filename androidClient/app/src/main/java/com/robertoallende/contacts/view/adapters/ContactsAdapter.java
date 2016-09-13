@@ -10,16 +10,16 @@ import android.widget.TextView;
 
 import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.entities.User;
-import com.robertoallende.contacts.view.ContactsActivity;
+import com.robertoallende.contacts.view.ContactListActivity;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ContactsAdapter extends ArrayAdapter<User> {
 
-    private final ContactsActivity context;
+    private final ContactListActivity context;
     private final  List<User> values;
 
-    public ContactsAdapter(ContactsActivity context, List<User> users) {
+    public ContactsAdapter(ContactListActivity context, List<User> users) {
         super(context, -1, users);
         this.context = context;
         this.values = users;

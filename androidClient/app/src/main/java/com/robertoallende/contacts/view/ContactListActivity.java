@@ -22,7 +22,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsActivity extends AppCompatActivity {
+public class ContactListActivity extends AppCompatActivity {
 
     private ContactsAdapter mAdapter;
 
@@ -61,7 +61,7 @@ public class ContactsActivity extends AppCompatActivity {
     }
 
     public void openPersonActivity(User user) {
-        Intent intent = PersonActivity.makeIntent(this, user);
+        Intent intent = ContactActivity.makeIntent(this, user);
         startActivity(intent);
     }
 
@@ -80,8 +80,8 @@ public class ContactsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         if (! EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }

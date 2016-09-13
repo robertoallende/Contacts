@@ -8,3 +8,4 @@ Todo:
 - Add swipe 
 - Sort contact by name
 - Style UI
+- Adding fake photo
