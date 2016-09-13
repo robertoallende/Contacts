@@ -6,9 +6,11 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.robertoallende.contacts.entities.User;
+import com.robertoallende.contacts.entities.UserCompare;
 import com.robertoallende.contacts.entities.Users;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,7 +49,10 @@ public class ContactsModel {
             return null;
         }
 
-        return result.body();
+        List<User> users = result.body();
+        Collections.sort(users, new UserCompare());
+
+        return users;
     }
 
     public Boolean saveContact(User user) {

@@ -2,6 +2,7 @@ package com.robertoallende.contacts.view.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,13 @@ import android.widget.TextView;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.entities.User;
+
+import com.robertoallende.contacts.entities.UserCompare;
 import com.robertoallende.contacts.view.ContactListActivity;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ContactsAdapter extends ArrayAdapter<User> {
@@ -75,6 +79,13 @@ public class ContactsAdapter extends ArrayAdapter<User> {
             return null;
         }
     }
+
+    public void add(User user) {
+        values.add(user);
+        Collections.sort(values, new UserCompare());
+        notifyDataSetChanged();
+    }
+
 
     public void remove(int position) {
         values.remove(position);

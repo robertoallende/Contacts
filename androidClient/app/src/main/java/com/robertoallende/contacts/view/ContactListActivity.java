@@ -17,6 +17,8 @@ import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.controller.ContactsController;
 import com.robertoallende.contacts.entities.User;
 import com.robertoallende.contacts.events.GetUsersResultEvent;
+import com.robertoallende.contacts.events.RemoveUsersResultEvent;
+import com.robertoallende.contacts.events.SaveUsersResultEvent;
 import com.robertoallende.contacts.view.adapters.ContactsAdapter;
 
 import org.greenrobot.eventbus.EventBus;
@@ -61,8 +63,7 @@ public class ContactListActivity extends AppCompatActivity {
     }
 
     public void initActivityData() {
-        ContactsController controller = ContactsController.getInstance(this);
-        controller.getContacts();
+        getContacts();
     }
 
     public void inflateAdapter(List<User> users) {
@@ -86,8 +87,7 @@ public class ContactListActivity extends AppCompatActivity {
                             public void onDismiss(ListViewAdapter view, int position) {
                                 User user = mAdapter.getUser(position);
                                 if (user != null) {
-                                    ContactsController controller = ContactsController.getInstance(getApplicationContext());
-                                    controller.removeContact(user);
+                                    removeContact(user);
                                     mAdapter.remove(position);
                                 }
                             }
@@ -138,17 +138,26 @@ public class ContactListActivity extends AppCompatActivity {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(RemoveUsersResultEvent eventResult) {
+        if (! eventResult.isSuccess()) {
+            getContacts();
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(SaveUsersResultEvent eventResult) {
+        if (eventResult.isSuccess()) {
+            getContacts();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ADD_CONTACT) {
             if (resultCode == RESULT_OK) {
                 User user = (User) data.getSerializableExtra(ContactAddActivity.USER);
-                mAdapter.add(user);
-                ContactsController controller = ContactsController.getInstance(this);
-                controller.saveContact(user);
-            } else {
-                ContactsController controller = ContactsController.getInstance(this);
-                controller.getContacts();
+                saveContact(user);
             }
         }
     }
@@ -165,6 +174,22 @@ public class ContactListActivity extends AppCompatActivity {
         if (! EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+    }
+
+    private void getContacts() {
+        ContactsController controller = ContactsController.getInstance(this);
+        controller.getContacts();
+    }
+
+    private void saveContact(User user) {
+
+        ContactsController controller = ContactsController.getInstance(this);
+        controller.saveContact(user);
+    }
+
+    private void removeContact(User user) {
+        ContactsController controller = ContactsController.getInstance(this);
+        controller.removeContact(user);
     }
 
 }
