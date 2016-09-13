@@ -65,7 +65,7 @@ public class ContactListActivity extends AppCompatActivity {
         controller.getContacts();
     }
 
-    public void initAdapter(List<User> users) {
+    public void inflateAdapter(List<User> users) {
         mAdapter.addAll(users);
         ListView listView = (ListView) findViewById(R.id.contact_list);
         final SwipeToDismissTouchListener<ListViewAdapter> touchListener =
@@ -84,7 +84,12 @@ public class ContactListActivity extends AppCompatActivity {
 
                             @Override
                             public void onDismiss(ListViewAdapter view, int position) {
-                                mAdapter.remove(position);
+                                User user = mAdapter.getUser(position);
+                                if (user != null) {
+                                    ContactsController controller = ContactsController.getInstance(getApplicationContext());
+                                    controller.removeContact(user);
+                                    mAdapter.remove(position);
+                                }
                             }
                         });
 
@@ -126,7 +131,7 @@ public class ContactListActivity extends AppCompatActivity {
             final List<User> users = eventResult.getUsers();
             if (users != null) {
                 mAdapter.clear();
-                initAdapter(users);
+                inflateAdapter(users);
             } else {
                 displayError("Error fetching data");
             }

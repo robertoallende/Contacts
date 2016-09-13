@@ -65,6 +65,24 @@ public class ContactsModel {
         }
         return result.body();
     }
+
+    public Boolean removeContact(User user) {
+        ContactsApi contactsApi = mRetrofit.create(ContactsApi.class);
+        Call<Boolean> call = contactsApi.deleteItem(user._id);
+
+        Response<Boolean> result = null;
+        try {
+            result = call.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (result == null) {
+            return false;
+        }
+        return result.body();
+    }
+
 }
 
 

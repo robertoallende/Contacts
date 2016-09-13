@@ -52,14 +52,16 @@ router.post('/new', function(req, res) {
 });
 
 router.delete('/:id', function(req, res) {
-  findByIdAndRemove(req.session.user._id, {}, function(error, data) {
+  console.log("Deleting " + req.params.id);
+
+  User.findByIdAndRemove(req.params.id, {}, function(error, data) {
     if(error){
         return false;
     }
     else {
         return true;
     }
-  }
+  });
 
 });
 

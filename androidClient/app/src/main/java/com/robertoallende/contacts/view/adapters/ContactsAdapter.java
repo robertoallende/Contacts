@@ -76,7 +76,11 @@ public class ContactsAdapter extends ArrayAdapter<User> {
     }
 
     public User getUser(int position) {
-        return values.get(position);
+        try {
+            return values.get(position);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public void remove(int position) {

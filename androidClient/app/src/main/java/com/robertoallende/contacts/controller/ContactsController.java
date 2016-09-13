@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.robertoallende.contacts.entities.User;
 import com.robertoallende.contacts.jobs.GetContactsJob;
+import com.robertoallende.contacts.jobs.RemoveContactJob;
 import com.robertoallende.contacts.jobs.SaveContactJob;
 
 public class ContactsController extends ContactsAppController {
@@ -27,6 +28,10 @@ public class ContactsController extends ContactsAppController {
 
     public void saveContact(User user) {
         mJobManager.addJobInBackground(new SaveContactJob(getContext(), user));
+    }
+
+    public void removeContact(User user) {
+        mJobManager.addJobInBackground(new RemoveContactJob(getContext(), user));
     }
 
 
