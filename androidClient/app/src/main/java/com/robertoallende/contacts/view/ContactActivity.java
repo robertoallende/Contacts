@@ -1,12 +1,15 @@
 package com.robertoallende.contacts.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
@@ -68,15 +71,37 @@ public class ContactActivity extends AppCompatActivity {
                     setTitle(user.name.toString());
             }
             if (user.location != null && personLocationView != null) {
-                personLocationView.setText(user.location.toString());
+                String location = user.location.toString();
+                if (location.isEmpty()) {
+                    LinearLayout layout = (LinearLayout) findViewById(R.id.person_location_layout);
+                    if (layout != null) {
+                        layout.setVisibility(View.GONE);
+                    }
+                }  else {
+                    personLocationView.setText(location);
+                }
+
             }
             if (user.email != null && personEmailView != null) {
                 personEmailView.setText(user.email);
             }
             if (user.phone != null && personPhoneView != null) {
-                personPhoneView.setText(user.phone);
+                if (user.phone.isEmpty()) {
+                    LinearLayout layout = (LinearLayout) findViewById(R.id.phone_location_layout);
+                    if (layout != null) {
+                        layout.setVisibility(View.GONE);
+                    }
+                } else {
+                    personPhoneView.setText(user.phone);
+                }
             }
             if (user.cell != null && personCellView != null) {
+                if (user.cell.isEmpty()) {
+                    LinearLayout layout = (LinearLayout) findViewById(R.id.smartphone_location_layout);
+                    if (layout != null) {
+                        layout.setVisibility(View.GONE);
+                    }
+                }
                 personCellView.setText(user.cell);
             }
         }

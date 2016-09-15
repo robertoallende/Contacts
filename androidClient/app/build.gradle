@@ -10,9 +10,16 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        debug{
+            resValue "string", "server_url", "http://192.168.2.71:8000"
+        }
+
         release {
+            resValue "string", "server_url", "http://192.168.2.71:8000"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

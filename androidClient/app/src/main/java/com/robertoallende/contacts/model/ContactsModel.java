@@ -1,10 +1,12 @@
 package com.robertoallende.contacts.model;
 
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.entities.User;
 import com.robertoallende.contacts.entities.UserCompare;
 import com.robertoallende.contacts.entities.Users;
@@ -23,13 +25,15 @@ public class ContactsModel {
     private Gson mGson;
     private Retrofit mRetrofit;
 
-    public ContactsModel() {
+    public ContactsModel(Context context) {
         mGson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
             .create();
 
+        String url = context.getResources().getString(R.string.server_url);
+
         mRetrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.2.71:8000")
+                .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create(mGson))
                 .build();
     }

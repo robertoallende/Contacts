@@ -20,7 +20,7 @@ public class SaveContactJob  extends ContactsAppJob {
 
     @Override
     public void onRun() throws Throwable {
-        ContactsModel contactsModel = new ContactsModel();
+        ContactsModel contactsModel = new ContactsModel(mContext);
         Boolean result = contactsModel.saveContact(mUser);
         EventBus.getDefault().post(new SaveUsersResultEvent(result));
     }

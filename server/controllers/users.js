@@ -42,11 +42,12 @@ router.post('/new', function(req, res) {
   var user = new User(req.body);
   user.save( function(error, data){
     if(error){
-        return false;
+      console.log('Error!');
+        res.json(false);
     }
     else {
-        // res.json(data);
-        return true;
+        console.log('Ok!');
+        res.json(true);
     }
   });
 });
@@ -56,10 +57,10 @@ router.delete('/:id', function(req, res) {
 
   User.findByIdAndRemove(req.params.id, {}, function(error, data) {
     if(error){
-        return false;
+        res.json(false);
     }
     else {
-        return true;
+        res.json(true);
     }
   });
 

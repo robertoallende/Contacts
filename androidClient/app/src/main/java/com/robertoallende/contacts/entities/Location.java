@@ -16,9 +16,22 @@ public class Location implements Serializable {
     }
 
     public String toString() {
+        String cityName = "";
+        String stateName = "";
+        if (city != null && !city.isEmpty() ) {
+            cityName = city.substring(0,1).toUpperCase() + city.substring(1);
+        }
+        if (state != null && !state.isEmpty()) {
+            stateName = state.substring(0, 1).toUpperCase() + state.substring(1);
+        }
 
-        String cityName = city.substring(0,1).toUpperCase() + city.substring(1);
-        String stateName = state.substring(0,1).toUpperCase() + state.substring(1);
+        if (cityName.isEmpty() && stateName.isEmpty()) {
+            return "";
+        } else if (! cityName.isEmpty() && stateName.isEmpty()) {
+            return cityName;
+        } else if (cityName.isEmpty() && ! stateName.isEmpty()) {
+            return stateName;
+        }
 
         return cityName + ", " + stateName;
     }

@@ -19,7 +19,7 @@ public class RemoveContactJob  extends ContactsAppJob {
 
     @Override
     public void onRun() throws Throwable {
-        ContactsModel contactsModel = new ContactsModel();
+        ContactsModel contactsModel = new ContactsModel(mContext);
         Boolean result = contactsModel.removeContact(mUser);
         EventBus.getDefault().post(new RemoveUsersResultEvent(result));
     }

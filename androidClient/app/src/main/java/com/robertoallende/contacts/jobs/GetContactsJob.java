@@ -21,7 +21,7 @@ public class GetContactsJob extends ContactsAppJob {
 
     @Override
     public void onRun() throws Throwable {
-        ContactsModel contactsModel = new ContactsModel();
+        ContactsModel contactsModel = new ContactsModel(mContext);
         List<User> users = contactsModel.getContacts();
         Boolean result = false;
         if (users != null && users.size() > 0) {

@@ -45,6 +45,7 @@
                 android:textSize="24sp"/>
 
             <LinearLayout
+                android:id="@+id/person_location_layout"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_width="match_parent"
@@ -88,6 +89,7 @@
                 </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/phone_location_layout"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_width="match_parent"
@@ -109,6 +111,7 @@
                 </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/smartphone_location_layout"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_width="match_parent"

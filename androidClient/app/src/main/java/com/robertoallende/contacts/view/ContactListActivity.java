@@ -54,6 +54,14 @@ public class ContactListActivity extends AppCompatActivity {
                 openContactAddActivity();
             }
         });
+
+        ListView listview = (ListView)findViewById(R.id.contact_list);
+        List<User> users = new ArrayList<User>();
+        mAdapter = new ContactsAdapter(this, users);
+        if (listview != null) {
+            listview.setAdapter(mAdapter);
+        }
+        getContacts();
     }
 
 
@@ -153,6 +161,7 @@ public class ContactListActivity extends AppCompatActivity {
         if (requestCode == ADD_CONTACT) {
             if (resultCode == RESULT_OK) {
                 User user = (User) data.getSerializableExtra(ContactAddActivity.USER);
+                //mAdapter.add(user);
                 saveContact(user);
             }
         }
@@ -170,16 +179,11 @@ public class ContactListActivity extends AppCompatActivity {
         if (! EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (mAdapter == null) {
-            getContacts();
-        }
-
     }
 
     private void getContacts() {
