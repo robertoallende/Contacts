@@ -2,13 +2,18 @@ package com.robertoallende.contacts.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.robertoallende.contacts.R;
 import com.robertoallende.contacts.entities.User;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 public class ContactActivity extends AppCompatActivity {
 
@@ -40,6 +45,24 @@ public class ContactActivity extends AppCompatActivity {
 
         User user = (User) getIntent().getExtras().getSerializable(PERSON);
         if (user != null) {
+            ImageView imageView = (ImageView) findViewById(R.id.profile_contact_photo);
+            if (user.picture != null) {
+                String imageUrl = "";
+                if (! user.picture.large.isEmpty()) {
+                    imageUrl = user.picture.large;
+                    Transformation transformation = new RoundedTransformationBuilder()
+                            .borderColor(Color.WHITE)
+                            .borderWidthDp(1)
+                            .cornerRadiusDp(140)
+                            .oval(false)
+                            .build();
+
+                    Picasso.with(this).load(imageUrl).transform(transformation).into(imageView);
+                } else {
+                    Picasso.with(this).load(R.drawable.default_user).into(imageView);
+                }
+            }
+
             if (user.name != null && personNameView != null) {
                     personNameView.setText(user.name.toString());
                     setTitle(user.name.toString());

@@ -56,10 +56,7 @@ public class ContactListActivity extends AppCompatActivity {
             }
         });
 
-        ListView listview = (ListView)findViewById(R.id.contact_list);
-        ArrayList<User> users = new ArrayList<User>();
-        mAdapter = new ContactsAdapter(this, users);
-        listview.setAdapter(mAdapter);
+
     }
 
     public void initActivityData() {
@@ -174,6 +171,10 @@ public class ContactListActivity extends AppCompatActivity {
         if (! EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+        ListView listview = (ListView)findViewById(R.id.contact_list);
+        ArrayList<User> users = new ArrayList<User>();
+        mAdapter = new ContactsAdapter(this, users);
+        listview.setAdapter(mAdapter);
     }
 
     private void getContacts() {

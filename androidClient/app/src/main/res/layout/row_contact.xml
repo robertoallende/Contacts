@@ -17,6 +17,7 @@
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
         android:background="@android:color/white"
+        android:gravity="center_vertical"
         >
 
         <ImageView
@@ -29,9 +30,12 @@
             />
 
         <TextView
+            android:paddingLeft="16dp"
             android:id="@+id/contact_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            />
 
     </LinearLayout>
 

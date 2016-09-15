@@ -4,39 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".view.ContactActivity"
     tools:showIn="@layout/activity_contact"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/person_name"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="180dp"
+        android:background="@color/colorPrimaryDark">
 
-    <TextView
-        android:id="@+id/person_location"
+
+        <ImageView
+            android:id="@+id/profile_contact_photo"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/default_user"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/person_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/person_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"/>
 
-    <TextView
-        android:id="@+id/person_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
-    <TextView
-        android:id="@+id/person_cell"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_location"
+                />
+
+            <TextView
+                android:id="@+id/person_location"
+                android:paddingLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_email"
+                />
+
+            <TextView
+                android:paddingLeft="5dp"
+                android:id="@+id/person_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_phone"
+                />
+
+            <TextView
+                android:paddingLeft="5dp"
+                android:id="@+id/person_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_smartphone"
+                />
+
+            <TextView
+                android:paddingLeft="5dp"
+                android:id="@+id/person_cell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
