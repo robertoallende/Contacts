@@ -39,7 +39,6 @@ public class ContactListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list);
         initViewItems();
-        initActivityData();
 
         EventBus.getDefault().register(this);
     }
@@ -55,13 +54,8 @@ public class ContactListActivity extends AppCompatActivity {
                 openContactAddActivity();
             }
         });
-
-
     }
 
-    public void initActivityData() {
-        getContacts();
-    }
 
     public void inflateAdapter(List<User> users) {
         mAdapter.addAll(users);
@@ -127,7 +121,12 @@ public class ContactListActivity extends AppCompatActivity {
         if (eventResult.isSuccess()) {
             final List<User> users = eventResult.getUsers();
             if (users != null) {
-                mAdapter.clear();
+                ListView listview = (ListView)findViewById(R.id.contact_list);
+                mAdapter = new ContactsAdapter(this, users);
+                if (listview != null) {
+                    listview.setAdapter(mAdapter);
+
+                }
                 inflateAdapter(users);
             } else {
                 displayError("Error fetching data");
@@ -171,10 +170,16 @@ public class ContactListActivity extends AppCompatActivity {
         if (! EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-        ListView listview = (ListView)findViewById(R.id.contact_list);
-        ArrayList<User> users = new ArrayList<User>();
-        mAdapter = new ContactsAdapter(this, users);
-        listview.setAdapter(mAdapter);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mAdapter == null) {
+            getContacts();
+        }
+
     }
 
     private void getContacts() {
