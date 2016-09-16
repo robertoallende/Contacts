@@ -35,7 +35,7 @@ In this example, the server is running on a machine with IP number 192.168.2.71.
 
 Once this change is done, the client should be compiled and it should connect properly to the server.
 
-### About the code
+### About the implementation
 
 The code follows MVC Architecture described by Yigit Boyar in the article titled  [A Recipe for writing responsive REST clients on Android](www.birbit.com/a-recipe-for-writing-responsive-rest-clients-on-android/) and in the talk titled [Android Application Architecture (Android Dev Summit 2015)](https://www.youtube.com/watch?v=BlkJzgjzL0c) at the Android Dev Summit 2015.
 
