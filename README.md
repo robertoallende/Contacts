@@ -33,6 +33,7 @@ Before running the client, it is require to setup the address server is running.
 
 In this example, the server is running on a machine with IP number 192.168.2.71. If the application server is running on another IP number, this value hast to be set accordingly. 
 
+Once this change is done, the client should be compiled and it should connect properly to the server.
 
 ### About the code
 
