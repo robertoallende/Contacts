@@ -19,14 +19,16 @@ The application was coded running Android Studio 2.1.3. In order to get it runni
 
 Before running the client, it is require to setup the address server is running. To do that, modify app gradle file, replacing the values of the server_url variable inside buildTypes to match the ip number server is running.
 
-```buildTypes {
+    buildTypes {
 
         debug{
             resValue "string", "server_url", "http://192.168.2.71:8000"
         }
 
         release {
-            resValue "string", "server_url", "http://192.168.2.71:8000"```
+            resValue "string", "server_url", "http://192.168.2.71:8000"
+            }
+        }
 
 
 In this example, the server is running on a machine with IP number 192.168.2.71. If the application server is running on another IP number, this value hast to be set accordingly. 
