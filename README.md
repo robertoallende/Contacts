@@ -26,8 +26,8 @@ Before running the client, it is require to setup the address server is running.
         }
 
         release {
-            resValue "string", "server_url", "http://192.168.2.71:8000"
-```
+            resValue "string", "server_url", "http://192.168.2.71:8000"```
+
 
 In this example, the server is running on a machine with IP number 192.168.2.71. If the application server is running on another IP number, this value hast to be set accordingly. 
 
